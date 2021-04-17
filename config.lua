@@ -1,6 +1,6 @@
 snapshots = {
     {name = "base",  modules = {"alpine"}},
-    {name = "setup", modules = {"network", "patch",}},
+    {name = "setup", modules = {"network", "patch"}},
 }
 
 path = {
@@ -23,5 +23,5 @@ network = {
 }
 
 patch = {
-    DIRECTORIES = "firmware/",
+    DIRECTORIES = "overlay/",
 }
