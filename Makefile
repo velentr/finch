@@ -7,11 +7,13 @@ ARCH ?= arm64
 CROSS_COMPILE ?= aarch64-rpi3-linux-gnu-
 
 DEFCONFIG := bcmrpi3_defconfig
-DTB := bcm2837-rpi-3-b.dtb
+DTB := bcm2710-rpi-3-b.dtb
 
 KFW := linux/arch/$(ARCH)/boot
 FW := firmware/boot
 FWO := overlay/boot
+
+all: firmware kernel
 
 kernel: | overlay/boot
 	rm -f linux/.config
@@ -22,8 +24,8 @@ kernel: | overlay/boot
 		INSTALL_MOD_PATH=../overlay \
 		INSTALL_MOD_STRIP=1 \
 		modules_install
-	cp $(KFW)/dts/broadcom/bcm2837-rpi-3-b.dtb $(FWO)/
-	cp $(KFW)/Image $(FWO)/kernel8.img
+	cp $(KFW)/dts/broadcom/$(DTB) $(FWO)/
+	cp $(KFW)/Image.gz $(FWO)/kernel8.img
 
 menuconfig:
 	rm -f linux/.config
@@ -45,4 +47,7 @@ overlay:
 overlay/boot: | overlay
 	mkdir overlay/boot
 
-.PHONY: firmware kernel menuconfig
+clean:
+	rm -rf overlay
+
+.PHONY: all clean firmware kernel menuconfig
