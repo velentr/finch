@@ -3,4 +3,4 @@
 	url = https://github.com/raspberrypi/firmware.git
 [submodule "linux"]
 	path = linux
-	url = https://github.com/raspberrypi/linux.git
+	url = git@github.com:velentr/linux.git
