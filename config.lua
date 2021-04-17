@@ -19,7 +19,7 @@ alpine = {
 }
 
 network = {
-    DEVNAME = "foobar",
+    DEVNAME = "finch",
 }
 
 patch = {
