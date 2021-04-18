@@ -1,11 +1,14 @@
 snapshots = {
     {name = "base",  modules = {"alpine"}},
     {name = "setup", modules = {"network", "patch"}},
+    {name = "fpgen", modules = {"flashpack"}},
 }
 
 path = {
     run = "/home/bkubisiak/src/eib/eib-run.sh",
     mod = "/home/bkubisiak/src/eib/mod",
+    qemu = "/usr/bin/qemu-aarch64",
+    target = "./root",
 }
 
 alpine = {
@@ -16,6 +19,10 @@ alpine = {
     PACKAGES = "alpine-base dropbear erlang wireguard-tools",
     -- RMPACKAGES = "",
     SERVICES = "dropbear",
+}
+
+flashpack = {
+    NAME = "finch_flashpack.sh",
 }
 
 network = {
